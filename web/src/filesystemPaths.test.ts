@@ -44,6 +44,13 @@ test("directory preview paths resolve against the preview root", () => {
       path: "/tmp/demo/",
     }),
   ).toBe("/tmp/demo");
+  expect(
+    directoryPreviewPath({
+      type: "directory",
+      root: "C:\\repo",
+      path: "C:\\repo\\src",
+    }),
+  ).toBe("C:/repo/src");
 });
 
 test("directory preview names use the last path component", () => {

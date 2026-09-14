@@ -19,10 +19,11 @@ export function directoryPreviewPath(
   preview: { type?: string; root: string; path: string } | null | undefined,
 ): string | null {
   if (!preview || preview.type !== "directory") return null;
-  const path = /^(?:\/|[a-z]:\/)/i.test(preview.path)
-    ? preview.path
-    : `${preview.root.replace(/\/+$/, "")}/${preview.path}`;
-  return normalizeFilesystemPath(path);
+  const path = normalizeFilesystemPath(preview.path);
+  if (/^(?:\/|[a-z]:\/)/i.test(path)) return path;
+  return normalizeFilesystemPath(
+    `${preview.root.replace(/\/+$/, "")}/${path}`,
+  );
 }
 
 /** Display name for a directory preview: its last path component. */
