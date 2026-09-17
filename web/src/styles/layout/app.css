@@ -164,6 +164,7 @@
 .app.zen .topbar:hover ~ .zen-exit,
 .app.zen .topbar:focus-within ~ .zen-exit,
 .app.zen .topbar:has([data-state="open"]) ~ .zen-exit {
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
